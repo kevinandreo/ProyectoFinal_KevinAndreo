@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>{{ articulo.titulo }}</h1>
+    <h2>{{ articulo.subtitulo }}</h2>
+    <p>{{ articulo.cuerpo }}</p>
+    <p>Autor: {{ articulo.autor }}</p>
+    <p>Fecha: {{ articulo.fecha }}</p>
+    {% if articulo.imagen %}
+        <img src="{{ articulo.imagen.url }}" alt="Imagen del artículo">
+    {% endif %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'blog:editar_articulo' articulo_id=articulo.id %}" class="btn btn-primary">Editar</a>
+        <a href="{% url 'blog:eliminar_articulo' articulo_id=articulo.id %}" class="btn btn-danger">Eliminar</a>
+    {% endif %}
+{% endblock %}
+

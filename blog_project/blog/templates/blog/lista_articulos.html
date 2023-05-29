@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Artículos</h1>
+    <ul>
+        {% for articulo in articulos %}
+            <li>
+                <a href="{% url 'blog:detalle_articulo' articulo_id=articulo.id %}">{{ articulo.titulo }}</a>
+            </li>
+        {% empty %}
+            <li>No hay artículos.</li>
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+        <a href="{% url 'blog:crear_articulo' %}" class="btn btn-primary">Crear Artículo</a>
+    {% endif %}
+{% endblock %}

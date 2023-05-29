@@ -1,0 +1,7 @@
+{% block content %}
+  <h1>Perfil de usuario</h1>
+  <p>Nombre: {{ user.username }}</p>
+  <p>Descripción: {{ perfil.description }}</p>
+  <p>Página web: <a href="{{ perfil.website }}">{{ perfil.website }}</a></p>
+  <p>Email: {{ user.email }}</p>
+{% endblock %}
