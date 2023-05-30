@@ -53,7 +53,7 @@ class EditarArticuloView(View):
 
     def post(self, request, articulo_id):
         articulo = get_object_or_404(Articulo, pk=articulo_id)
-        form = ArticuloForm(request.POST, instance=articulo)
+        form = ArticuloForm(request.POST, request.FILES, instance=articulo)
         form.fields['autor'].queryset = User.objects.all()
         if form.is_valid():
             articulo_autor_anterior = articulo.autor

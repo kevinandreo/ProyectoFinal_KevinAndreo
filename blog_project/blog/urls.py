@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from .views import HomeView, AboutView, ListaArticulosView, DetalleArticuloView, CrearArticuloView, EditarArticuloView, EliminarArticuloView
 
@@ -12,3 +14,5 @@ urlpatterns = [
     path('articles/editar/<int:articulo_id>/', EditarArticuloView.as_view(), name='editar_articulo'),
     path('articles/eliminar/<int:articulo_id>/', EliminarArticuloView.as_view(), name='eliminar_articulo'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
